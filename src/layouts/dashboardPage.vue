@@ -14,7 +14,7 @@ const beforeReadImage = (file) => {
   if (file.type === 'image/png' || file.type === 'image/jpeg') {
     return true;
   } else {
-    Toast('Please upload an image in jpg format');
+    Toast('Hey, upload gambar yang bener!');
     return false;
   }
 }
