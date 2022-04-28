@@ -15,8 +15,9 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'sans': ['Caveat', ...defaulTheme.fontFamily.sans],
+      'caveat': ['Caveat', 'sans'],
       'title': ['Square Peg', 'sans'],
+      'sans': ['Comfortaa', ...defaulTheme.fontFamily.sans]
     },
     extend: {},
   },

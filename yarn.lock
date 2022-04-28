@@ -931,7 +931,7 @@ util-deprecate@^1.0.2:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
-vant@^3.4.8:
+vant@^3.4.3:
   version "3.4.8"
   resolved "https://registry.yarnpkg.com/vant/-/vant-3.4.8.tgz#f8f2ac9db91aae05d652e617a7a50264c8a69ab9"
   integrity sha512-xPAiPdCiaZbcdbVplVh4N2lmYzDAr2UdadkUHoa9uwfHS9/dab4f8TigfCFzlfAEk53U1J6w+6qZ+whtt4T3hw==
