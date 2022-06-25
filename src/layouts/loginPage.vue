@@ -1,4 +1,31 @@
+<script setup>
+  import { computed, ref } from '@vue/reactivity';
+  import { watch, watchEffect } from 'vue';
+  import { authLogin } from '../stores';
+import Loader_text from '../components/loaders/loader_text.vue';
+import Loader_eye from '../components/loaders/loader_eye.vue';
+
+  const store = authLogin()
+
+  const setForm = ref({
+    email: '',
+    password: ''
+  })
+  
+  const handleLogin = (e) => {
+    e.preventDefault()
+    store.authLogin(setForm.value)
+  }
+
+  watchEffect(() => {
+    localStorage.removeItem('is_login')
+    localStorage.removeItem('access_token')
+  })
+</script>
+
 <template>
+  <!-- <Loader_text v-if="store.loading" /> -->
+  <Loader_eye v-if="store.loading" />
   <!-- component -->
   <div class="min-h-screen flex justify-center items-center bg-white font-sans">
     <form>
@@ -7,12 +34,12 @@
           <img width="100" class="-mt-10 rounded-full" src="../assets/images/login_image.jpg" />
           <p class="font-title">Selamat datang, Mualifah</p>
         </div>
-        <input class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80" placeholder="Masukan email ya :)" type="email" />
+        <input class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80" placeholder="Masukan email ya :)" type="email" v-model.lazy="setForm.email" />
         <div class="flex flex-col space-y-1">
-          <input class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80" placeholder="Jangan lupa juga passwordnya" type="password" />
+          <input class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80" placeholder="Jangan lupa juga passwordnya" type="password" v-model.lazy="setForm.password" />
         </div>
         <div class="flex flex-col w-full pt-5">
-          <button class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
+          <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
 
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>

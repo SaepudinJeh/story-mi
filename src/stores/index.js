@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 
+import authLogin from './auth/auth'
+
 const stateForm = defineStore('state-form', {
   state: () => {
     return {
@@ -13,4 +15,4 @@ const stateForm = defineStore('state-form', {
   }
 })
 
-export { stateForm }
+export { stateForm, authLogin }
