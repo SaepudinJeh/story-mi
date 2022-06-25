@@ -1,9 +1,9 @@
 <script setup>
-  import { computed, ref } from '@vue/reactivity';
-  import { watch, watchEffect } from 'vue';
+  import { ref } from '@vue/reactivity';
+  import { watchEffect } from 'vue';
+
   import { authLogin } from '../stores';
-import Loader_text from '../components/loaders/loader_text.vue';
-import Loader_eye from '../components/loaders/loader_eye.vue';
+  import Loader_eye from '../components/loaders/loader_eye.vue';
 
   const store = authLogin()
 

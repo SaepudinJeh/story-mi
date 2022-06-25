@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { Toast } from 'vant'
 
 import router from '../../router'
 
@@ -36,9 +37,25 @@ const authLogin = defineStore('auth', {
             console.log('response', isAuth)
 
             if(isAuth.statusCode === 200) {
+              this.isAuth = true;
+
+              Toast.success({
+                message: 'Login Berhasil',
+                icon: 'fire-o'
+              })
+
               localStorage.setItem('access_token', JSON.stringify(isAuth.access_token));
               localStorage.setItem('is_login', JSON.stringify(true))
+
               router.push({ path: '/' })
+              
+            } else {
+              Toast.fail({
+                message: 'Gagal Login!',
+                icon: "smile-o"
+              })
+
+              router.go(0)
             }
 
         } catch(err) {
