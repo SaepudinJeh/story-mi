@@ -25,9 +25,10 @@ export default {
         async fetchStories({commit}) {
             try {
                 commit('setLoading')
-        
-                const urlLocal = 'http://localhost:3000/v1/get/stories'
-                // const urlProd = process.env.URL_BASE
+                
+
+                // const urlBase = 'http://localhost:3000/v1/post/stories'
+                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/get/stories'
         
                 const response = await fetch(urlLocal, {
                 headers: {

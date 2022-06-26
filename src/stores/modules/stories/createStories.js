@@ -55,7 +55,8 @@ export default {
             try {
                 commit('setLoading')
 
-                const urlBase = 'http://localhost:3000/v1/post/stories'
+                // const urlBase = 'http://localhost:3000/v1/post/stories'
+                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/post/stories'
 
                 const getToken = JSON.parse(localStorage.getItem('access_token'))
         

@@ -39,8 +39,11 @@ export default {
               console.log('Payload', payload)
     
                 commit('setLoading')
+
+                // const urlBase = 'http://localhost:3000/v1/auth/login'
+                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/auth/login'
     
-                const response = await fetch('http://localhost:3000/v1/auth/login', {
+                const response = await fetch(urlBase, {
                     method: 'POST',
                     mode: 'cors',
                     credentials: 'same-origin',
