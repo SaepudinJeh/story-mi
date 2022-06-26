@@ -30,7 +30,7 @@ export default {
                 // const urlBase = 'http://localhost:3000/v1/post/stories'
                 const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/get/stories'
         
-                const response = await fetch(urlLocal, {
+                const response = await fetch(urlBase, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
