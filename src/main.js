@@ -1,11 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createPinia } from 'pinia'
-import { Locale } from 'vant';
-import idID from 'vant/es/locale/lang/id-ID';
+import { Lazyload } from 'vant'
 
-Locale.use('en-US', idID);
-
+import { stores } from './stores'
 import './assets/index.css'
 
 import router from './router'
@@ -13,6 +10,9 @@ import router from './router'
 const app = createApp(App)
 
 app.use(router)
-app.use(createPinia())
+app.use(stores)
+app.use(Lazyload, {
+    lazyComponent : true
+})
 
 app.mount('#app')

@@ -1,13 +1,14 @@
 <script setup>
-import { ref } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
 import { Field, CellGroup, Form, Uploader, Button, Toast, Icon, Cell, Calendar } from 'vant';
 
-import { stateForm } from '../stores'
+import Loader_eye from '../components/loaders/loader_eye.vue';
+import { useStore } from 'vuex';
 
-const state = stateForm().data;
+const store2 = useStore()
 
 const afterRead = (file) => {
-  console.log(file.content)
+  console.log(file)
 }
 
 const beforeReadImage = (file) => {
@@ -21,28 +22,63 @@ const beforeReadImage = (file) => {
 
 const showCalendar = ref(false)
 
+const getBase64Image = ref()
+
+const formsStory = ref({
+  title: '',
+  desc: '',
+  createdStory: '',
+  image: ''
+})
+
+const dataImage = ref({
+  file: null,
+  upload_preset: 'stories',
+  cloud_name: 'stories-1999-2100'
+})
+
 const confirmDate = (date) => {
-  state.date = `${date}`
+  formsStory.value.createdStory = date
   showCalendar.value = false
 }
 
 const closeCalendar = () => showCalendar.value = false
 
+const handleCreateStory = (e) => {
+  e.preventDefault()
+  dataImage.value.file =  getBase64Image.value && getBase64Image?.value[0]?.content
+
+  if(dataImage.value.file) {
+    store2.dispatch('createStories/uploadImage', dataImage.value).then(() => {
+      store2.dispatch('createStories/createStory', formsStory.value)
+    })
+
+  }
+
+  store2.dispatch('createStories/createStory', formsStory.value)
+}
+
+const loading = computed(() => {
+  store2.getters['createStories/getLoading']
+})
+
 </script>
 
 <template>
   <section class="h-screen w-full flex flex-col gap-y-4 justify-center mx-auto items-center">
+    <Loader_eye v-if="loading" />
+
     <Form>
       <CellGroup inset class="font-sans">
         <Field 
-          v-model="state.title"
+          v-model="formsStory.title"
           left-icon="smile-o"
           label="Judul (optional)"
           placeholder="Inget ini buat judul..."
         />
 
         <Field
-          v-model="state.story"
+          v-model="formsStory.desc"
           type="textarea"
           placeholder="Apa yang kamu rasakan Lip?"
           rows="1"
@@ -57,18 +93,18 @@ const closeCalendar = () => showCalendar.value = false
             <Uploader
               :after-read="afterRead"
               :before-read="beforeReadImage"
-              v-model="state.image"
+              v-model="getBase64Image"
               max-count="1"
             />
           </template>
         </Field>
 
         
-        <Field is-link readonly v-model="state.date" placeholder="Masukan tanggal" @click="showCalendar = true" />
+        <Field is-link readonly v-model="formsStory.createdStory" placeholder="Masukan tanggal" @click="showCalendar = true" />
 
         <Calendar :show="showCalendar" @confirm="confirmDate" @close="closeCalendar" :show-confirm="false" title="Ini Kalender" close-on-click-overlay color="#808080" lazy-render />
 
-        <Button block color="gray" class="font-sans">Jangan lupa submit</Button>
+        <Button @click="handleCreateStory" block color="gray" class="font-sans">Jangan lupa submit</Button>
       </CellGroup>
     </Form>
 

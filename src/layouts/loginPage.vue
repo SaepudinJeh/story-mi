@@ -1,11 +1,11 @@
 <script setup>
-  import { ref } from '@vue/reactivity';
+  import { computed, ref } from '@vue/reactivity';
   import { watchEffect } from 'vue';
+  import { useStore } from 'vuex';
 
-  import { authLogin } from '../stores';
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
-  const store = authLogin()
+  const store = useStore()
 
   const setForm = ref({
     email: '',
@@ -14,8 +14,12 @@
   
   const handleLogin = (e) => {
     e.preventDefault()
-    store.authLogin(setForm.value)
+    store.dispatch('login/authLogin', setForm.value)
   }
+
+  const loading = computed(() => {
+    return store.getters['login/getLoading']
+  })
 
   watchEffect(() => {
     localStorage.removeItem('is_login')
@@ -24,8 +28,7 @@
 </script>
 
 <template>
-  <!-- <Loader_text v-if="store.loading" /> -->
-  <Loader_eye v-if="store.loading" />
+  <Loader_eye v-if="loading" />
   <!-- component -->
   <div class="min-h-screen flex justify-center items-center bg-white font-sans">
     <form>

@@ -1,18 +1,16 @@
-import { defineStore } from 'pinia'
+import { createStore } from 'vuex'
 
-import authLogin from './auth/auth'
+import login from './modules/auth/login'
+import getStories from './modules/stories/getStories'
+import createStories from './modules/stories/createStories'
 
-const stateForm = defineStore('state-form', {
-  state: () => {
-    return {
-      data: {
-        title: '',
-        story: '',
-        date: '',
-        image: []
-      }
+const stores = createStore({
+    modules: {
+        login,
+        getStories,
+        createStories
     }
-  }
 })
 
-export { stateForm, authLogin }
+
+export { stores }

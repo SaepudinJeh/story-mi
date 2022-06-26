@@ -1,5 +1,7 @@
+import { computed } from 'vue'
 import { createWebHistory, createRouter } from 'vue-router'
-import { authLogin } from '../stores'
+import { stores } from '../stores'
+
 
 const routes = [
   {
@@ -25,12 +27,10 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const store = authLogin();
+  const isAuth = stores.getters['login/getIsAuth']
 
-  console.log(store.isAuth)
-
-  if(to.name !== 'login' && !store.isAuth) next({ name: 'login' })
-  else if(to.name === 'login' && store.isAuth) next({ name: 'home' })
+  if(to.name === 'login' && isAuth) next({ name: 'home' })
+  else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
 
   else next()
 })
