@@ -50,7 +50,7 @@
     </form>
     
 
-    <div class="absolute bottom-0 w-full p-3 bg-[#F7F9FA] flex justify-center items-center space-x-3 text-[14px] font-medium text-[#666]">
+    <div class="static bottom-0 w-full p-3 bg-[#F7F9FA] flex justify-center items-center space-x-3 text-[14px] font-medium text-[#666]">
       <p class="font-title text-xl text-center">"Angin tidak berhembus untuk menggoyangkan pepohonan melainkan untuk menguji akarnya"</p>
     </div>
   </div>
