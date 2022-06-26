@@ -8,7 +8,7 @@
   import HeaderPage from '../components/homepages/HeaderPage.vue';
   import PanelPiece from '../components/homepages/PanelPiece.vue';
   import { onMounted } from 'vue';
-import Loader_eye from '../components/loaders/loader_eye.vue';
+  import Loader_eye from '../components/loaders/loader_eye.vue';
 
   const store = useStore()
 
