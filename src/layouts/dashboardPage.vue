@@ -5,7 +5,7 @@ import { Field, CellGroup, Form, Uploader, Button, Toast, Icon, Cell, Calendar }
 import Loader_eye from '../components/loaders/loader_eye.vue';
 import { useStore } from 'vuex';
 
-const store2 = useStore()
+const store = useStore()
 
 const afterRead = (file) => {
   console.log(file)
@@ -49,18 +49,20 @@ const handleCreateStory = (e) => {
   dataImage.value.file =  getBase64Image.value && getBase64Image?.value[0]?.content
 
   if(dataImage.value.file) {
-    store2.dispatch('createStories/uploadImage', dataImage.value).then(() => {
-      store2.dispatch('createStories/createStory', formsStory.value)
+    return store.dispatch('createStories/uploadImage', dataImage.value).then(() => {
+      store.dispatch('createStories/createStory', formsStory.value)
     })
 
   }
 
-  store2.dispatch('createStories/createStory', formsStory.value)
+  return store.dispatch('createStories/createStory', formsStory.value)
 }
 
 const loading = computed(() => {
-  store2.getters['createStories/getLoading']
+  return store.getters['createStories/getLoading']
 })
+
+console.log(loading.value)
 
 </script>
 

@@ -76,11 +76,12 @@ export default {
                     icon: "smile-o"
                   })
     
-                  router.go(0)
+                  router.push({ path: '/' })
                 }
     
             } catch(err) {
                 console.log('error', err)
+                router.push({ path: '/' })
             } finally {
                 commit('setLoading')
             }

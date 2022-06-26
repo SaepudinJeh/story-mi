@@ -1,4 +1,6 @@
 import { Toast } from "vant";
+import router from "../../../router";
+
 export default {
     namespaced: true,
     state: {
@@ -22,8 +24,6 @@ export default {
         async uploadImage({ commit }, payload) {
             try {
                 commit('setLoading')
-                
-                // const storeAuth = authLogin()
 
                 const urlCloudinary = `https://api.cloudinary.com/v1_1/${payload.cloud_name}/image/upload`;
         
@@ -84,9 +84,12 @@ export default {
                 console.log('success', resultCreated)
         
                 Toast.success('Success!')
+
+                router.push({ path: '/' })
             } catch (error) {
                 console.log(error)
                 Toast.fail('Ups!')
+                router.push({ path: '/' })
             } finally {
                 commit('setLoading')
             }
