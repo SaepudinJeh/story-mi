@@ -2,7 +2,7 @@
   import { computed, ref } from '@vue/reactivity';
   import { onMounted, watchEffect } from 'vue';
   import { useStore } from 'vuex';
-  import { googleOneTap } from 'vue3-google-login';
+  import { googleOneTap, decodeCredential } from 'vue3-google-login';
 
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
@@ -29,6 +29,8 @@
 
   const callback = (res) => {
     console.log("cuuukkkk", res)
+    const data = decodeCredential(res.credential)
+    console.log("data", data)
   }
 
   onMounted(() => {
