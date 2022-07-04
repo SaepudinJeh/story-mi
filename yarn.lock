@@ -973,6 +973,11 @@ vue-router@4:
   dependencies:
     "@vue/devtools-api" "^6.0.0"
 
+vue3-google-login@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/vue3-google-login/-/vue3-google-login-2.0.11.tgz#a47fec3b04a25ed7db56b23710f9a80d574c3c57"
+  integrity sha512-WEZ1GmEyazKgZyodJ1agrEfPhVeb++qIwUf/KdXHdfHrau51x2gubQxlrOtCoA9iT14HRz4p/KYSrfvzhizNPA==
+
 vue@^3.2.25:
   version "3.2.37"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.37.tgz#da220ccb618d78579d25b06c7c21498ca4e5452e"

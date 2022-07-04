@@ -1,7 +1,8 @@
 <script setup>
   import { computed, ref } from '@vue/reactivity';
-  import { watchEffect } from 'vue';
+  import { onMounted, watchEffect } from 'vue';
   import { useStore } from 'vuex';
+  import { googleOneTap } from 'vue3-google-login';
 
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
@@ -25,6 +26,17 @@
     localStorage.removeItem('is_login')
     localStorage.removeItem('access_token')
   })
+
+  const callback = (res) => {
+    console.log("cuuukkkk", res)
+  }
+
+  onMounted(() => {
+    googleOneTap({ autoLogin: true }).then((data) => {
+      console.log("response", data)
+    }).catch(err => console.log("err", err))
+  })
+
 </script>
 
 <template>
@@ -44,6 +56,8 @@
         <div class="flex flex-col w-full pt-5">
           <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
+
+        <!-- <GoogleLogin :callback="callback" auto-login /> -->
 
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>
       </div>

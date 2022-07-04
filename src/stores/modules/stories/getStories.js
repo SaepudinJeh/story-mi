@@ -28,7 +28,7 @@ export default {
                 
 
                 // const urlBase = 'http://localhost:3000/v1/post/stories'
-                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/get/stories'
+                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/get/stories?user=aliffah'
         
                 const response = await fetch(urlBase, {
                 headers: {
