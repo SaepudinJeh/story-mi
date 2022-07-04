@@ -28,15 +28,19 @@
   })
 
   const callback = async (res) => {
-    console.log("btn", res)
-    const data = decodeCredential(res.credential)
-    console.log("data", data)
+    // console.log("btn", res)
+    // const data = decodeCredential(res.credential)
+    // console.log("data", data)
+
+    const getToken = await googleTokenLogin()
+
+    console.log('btn token', getToken)
   }
 
-  onMounted(() => {
-    googleOneTap({ autoLogin: true }).then((data) => {
-      console.log("one tap", data)
-    }).catch(err => console.log("err", err))
+  onMounted(async () => {
+    const onTap = await googleOneTap({ autoLogin: true })
+
+    console.log("data onTap", onTap)
   })
 
 </script>
