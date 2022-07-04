@@ -59,7 +59,7 @@
           <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
 
-        <GoogleLogin :callback="callback" auto-login />
+        <GoogleLogin :callback="callback" />
 
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>
       </div>
