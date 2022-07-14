@@ -34,7 +34,7 @@
   <section>
     <Loader_eye v-if="loading" />
 
-    <HeaderPage />
+    <!-- <HeaderPage /> -->
 
     <template v-for="story in stories" :key="story">
       <lazy-component>

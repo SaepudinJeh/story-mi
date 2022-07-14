@@ -26,13 +26,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  const isAuth = stores.getters['login/getIsAuth']
+// router.beforeEach((to, from, next) => {
+//   const isAuth = stores.getters['login/getIsAuth']
 
-  if(to.name === 'login' && isAuth) next({ name: 'home' })
-  else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
+//   if(to.name === 'login' && isAuth) next({ name: 'home' })
+//   else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
 
-  else next()
-})
+//   else next()
+// })
 
 export default router

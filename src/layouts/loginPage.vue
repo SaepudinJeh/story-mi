@@ -2,7 +2,7 @@
   import { computed, ref } from '@vue/reactivity';
   import { onMounted, watchEffect } from 'vue';
   import { useStore } from 'vuex';
-  import { googleOneTap, decodeCredential, googleTokenLogin } from 'vue3-google-login';
+  import { googleOneTap } from 'vue3-google-login';
 
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
@@ -13,10 +13,10 @@
     password: ''
   })
   
-  const handleLogin = (e) => {
-    e.preventDefault()
-    store.dispatch('login/authLogin', setForm.value)
-  }
+  // const handleLogin = (e) => {
+  //   e.preventDefault()
+  //   store.dispatch('login/authLogin', setForm.value)
+  // }
 
   const loading = computed(() => {
     return store.getters['login/getLoading']
@@ -27,21 +27,17 @@
     localStorage.removeItem('access_token')
   })
 
-  const callback = async (res) => {
-    // console.log("btn", res)
-    // const data = decodeCredential(res.credential)
-    // console.log("data", data)
-
-    const getToken = await googleTokenLogin()
-
-    console.log('btn token', getToken)
-  }
-
-  onMounted(async () => {
-    const onTap = await googleOneTap({ autoLogin: true })
-
-    console.log("data onTap", onTap)
+  onMounted(() => {
+    googleOneTap({}).then((res) => {
+      console.info("response on tap", res);
+    }).catch((err) => console.warn(err))
   })
+ 
+  const handleLogin = () => {
+    const urlLoginGoogle = 'http://localhost:3000/oauth/google'
+
+    const newWindow = window.open(urlLoginGoogle, '_blank', 'width=500, heigth=600');
+  }
 
 </script>
 
@@ -52,8 +48,8 @@
     <form>
       <div class="p-10 border-[1px] -mt-10 border-slate-200 rounded-md flex flex-col items-center space-y-3">
         <div class="py-8 flex flex-col items-center gap-3 text-2xl text-gray-500">
-          <img width="100" class="-mt-10 rounded-full" src="../assets/images/login_image.jpg" />
-          <p class="font-title">Selamat datang, Mualifah</p>
+          <!-- <img width="100" class="-mt-10 rounded-full" src="../assets/images/login_image.jpg" /> -->
+          <!-- <p class="font-title">Selamat datang, Mualifah</p> -->
         </div>
         <input class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80" placeholder="Masukan email ya :)" type="email" v-model.lazy="setForm.email" />
         <div class="flex flex-col space-y-1">
@@ -63,7 +59,8 @@
           <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
 
-        <GoogleLogin :callback="callback" prompt />
+        <GoogleLogin prompt />
+        <button @click="handleLogin">Klik login</button>
 
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>
       </div>
