@@ -13,10 +13,10 @@
     password: ''
   })
   
-  // const handleLogin = (e) => {
-  //   e.preventDefault()
-  //   store.dispatch('login/authLogin', setForm.value)
-  // }
+  const handleLogin = (e) => {
+    e.preventDefault()
+    store.dispatch('login/authLogin', setForm.value)
+  }
 
   const loading = computed(() => {
     return store.getters['login/getLoading']
@@ -34,11 +34,19 @@
     }).catch((err) => console.warn(err))
   })
  
-  const handleLogin = () => {
-    const urlLoginGoogle = 'http://localhost:3000/oauth/google'
+  const handleLoginOauth = () => {
+    const baseURL = import.meta.env.PROD ? VITE_BASE_URL_PROD : VITE_BASE_URL_LOCAL;
 
-    const newWindow = window.open(urlLoginGoogle, '_blank', 'width=500, heigth=600');
+    const urlLoginGoogle = `${baseURL}/oauth/google`
+
+    var left = (screen.width/2 - 200)
+    var top = (screen.height/2 - 150)
+    const win = window.open(urlLoginGoogle, 'resizable=yes, width=800, height=700, top='+top+', left='+left)
+
+    win.focus()
   }
+
+  console.log("wkwkwkw", import.meta.env.DEV)
 
 </script>
 
@@ -59,9 +67,8 @@
         <div class="flex flex-col w-full pt-5">
           <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
-
-        <GoogleLogin prompt />
-        <button @click="handleLogin">Klik login</button>
+        
+        <button @click="handleLoginOauth">Klik login</button>
 
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>
       </div>
