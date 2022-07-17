@@ -9,6 +9,6 @@ module.exports = {
   rules: {
     // override/add rules settings here, such as:
     // 'vue/no-unused-vars': 'error'
-    "vue/require-prop-types": 0
+    "vue/require-prop-types": 0,
   }
 }
