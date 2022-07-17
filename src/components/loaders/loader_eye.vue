@@ -1,7 +1,7 @@
 <template>
-    <div class="absolute min-w-full h-screen bg-black/60 top-0 flex justify-center text-center items-center z-50">
-        <div class="eyes-7"></div>
-    </div>
+  <div class="absolute min-w-full h-screen bg-black/60 top-0 flex justify-center text-center items-center z-50">
+    <div class="eyes-7" />
+  </div>
 </template>
 
 <style scoped>

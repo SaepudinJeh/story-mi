@@ -1,6 +1,6 @@
 <script setup>
-import { computed, ref } from '@vue/reactivity';
-import { Field, CellGroup, Form, Uploader, Button, Toast, Icon, Cell, Calendar } from 'vant';
+import { computed, ref } from 'vue';
+import { Field, CellGroup, Form, Uploader, Button, Toast, Icon, Calendar } from 'vant';
 
 import Loader_eye from '../components/loaders/loader_eye.vue';
 import { useStore } from 'vuex';
@@ -71,7 +71,10 @@ console.log(loading.value)
     <Loader_eye v-if="loading" />
 
     <Form>
-      <CellGroup inset class="font-sans">
+      <CellGroup
+        inset
+        class="font-sans"
+      >
         <Field 
           v-model="formsStory.title"
           left-icon="smile-o"
@@ -93,20 +96,42 @@ console.log(loading.value)
         >
           <template #input>
             <Uploader
+              v-model="getBase64Image"
               :after-read="afterRead"
               :before-read="beforeReadImage"
-              v-model="getBase64Image"
               max-count="1"
             />
           </template>
         </Field>
 
         
-        <Field is-link readonly v-model="formsStory.createdStory" placeholder="Masukan tanggal" @click="showCalendar = true" />
+        <Field
+          v-model="formsStory.createdStory"
+          is-link
+          readonly
+          placeholder="Masukan tanggal"
+          @click="showCalendar = true"
+        />
 
-        <Calendar :show="showCalendar" @confirm="confirmDate" @close="closeCalendar" :show-confirm="false" title="Ini Kalender" close-on-click-overlay color="#808080" lazy-render />
+        <Calendar
+          :show="showCalendar"
+          :show-confirm="false"
+          title="Ini Kalender"
+          close-on-click-overlay
+          color="#808080"
+          lazy-render
+          @confirm="confirmDate"
+          @close="closeCalendar"
+        />
 
-        <Button @click="handleCreateStory" block color="gray" class="font-sans">Jangan lupa submit</Button>
+        <Button
+          block
+          color="gray"
+          class="font-sans"
+          @click="handleCreateStory"
+        >
+          Jangan lupa submit
+        </Button>
       </CellGroup>
     </Form>
 

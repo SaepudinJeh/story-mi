@@ -88,7 +88,7 @@ export default {
                 commit('setLoading')
             }
         },
-        async oauthLogin({ commit, rootGetters }, payload) {
+        async oauthLogin({ rootGetters }, payload) {
           try {
             const baseURL = rootGetters['baseUrl/getBaseUrl'];
             const urlBase = `${baseURL}/oauth/login`;
@@ -97,7 +97,7 @@ export default {
 
             console.log(result)
           } catch (error) {
-            console.log(result)
+            console.log(error)
           }
         }
     }

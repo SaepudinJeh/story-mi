@@ -1,7 +1,7 @@
 <template>
-    <div class="absolute min-w-full h-screen bg-black/50 top-0 flex justify-center text-center items-center">
-        <div class="classic-4 text-xs xs:text-sm md:text-base lg:text-lg text-white"></div>
-    </div>
+  <div class="absolute min-w-full h-screen bg-black/50 top-0 flex justify-center text-center items-center">
+    <div class="classic-4 text-xs xs:text-sm md:text-base lg:text-lg text-white" />
+  </div>
 </template>
 
 <style scoped>
