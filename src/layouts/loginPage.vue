@@ -15,7 +15,7 @@
   
   const handleLogin = (e) => {
     e.preventDefault()
-    store.dispatch('login/authLogin', setForm.value)
+    store.dispatch('login/authLoginLocal', setForm.value)
   }
 
   const loading = computed(() => {
@@ -27,19 +27,28 @@
     localStorage.removeItem('access_token')
   })
 
+  const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
+  console.log(baseURL)
+
   onMounted(() => {
-    googleOneTap().then((res) => {
+    googleOneTap({ autoLogin: true }).then((res) => {
       const data = decodeCredential(res.credential)
       console.info("response on tap", data);
+
+      const payload = {
+        email: data.email,
+        username: data.given_name,
+        email_verified: data.email_verified,
+        avatar: data.picture,
+        provider: 'google'
+      }
+
+      store.dispatch('login/oauthLogin', payload)
     }).catch((err) => console.warn(err))
   })
  
   const handleLoginOauth = (e) => {
     e.preventDefault()
-
-    const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
-
-    console.log(baseURL)
 
     const urlLoginGoogle = `${baseURL.value}/oauth/google`
 

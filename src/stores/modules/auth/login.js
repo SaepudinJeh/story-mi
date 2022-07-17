@@ -1,4 +1,5 @@
 import { Toast } from "vant";
+import { FetchData } from "../../../hooks";
 import router from "../../../router";
 
 const getTokenLocalStorage = localStorage.getItem('access_token'); 
@@ -34,15 +35,14 @@ export default {
         }
     },
     actions: {
-        async authLogin({ commit }, payload) {
+        async authLoginLocal({ commit, rootGetters }, payload) {
             try {
               console.log('Payload', payload)
     
                 commit('setLoading')
 
-                const baseURL = import.meta.env.PROD ? import.meta.env.VITE_BASE_URL_PROD : import.meta.env.VITE_BASE_URL_LOCAL;
+                const baseURL = rootGetters['baseUrl/getBaseUrl'];
 
-                // const urlBase = 'http://localhost:3000/v1/auth/login'
                 const urlBase = `${baseURL}/v1/auth/login`;
     
                 const response = await fetch(urlBase, {
@@ -87,6 +87,18 @@ export default {
             } finally {
                 commit('setLoading')
             }
+        },
+        async oauthLogin({ commit, rootGetters }, payload) {
+          try {
+            const baseURL = rootGetters['baseUrl/getBaseUrl'];
+            const urlBase = `${baseURL}/oauth/login`;
+    
+            const result = await FetchData(urlBase, payload);
+
+            console.log(result)
+          } catch (error) {
+            console.log(result)
+          }
         }
     }
 }
