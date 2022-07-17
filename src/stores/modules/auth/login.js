@@ -40,8 +40,10 @@ export default {
     
                 commit('setLoading')
 
+                const baseURL = import.meta.env.PROD ? import.meta.env.VITE_BASE_URL_PROD : import.meta.env.VITE_BASE_URL_LOCAL;
+
                 // const urlBase = 'http://localhost:3000/v1/auth/login'
-                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/auth/login'
+                const urlBase = `${baseURL}/v1/auth/login`;
     
                 const response = await fetch(urlBase, {
                     method: 'POST',
@@ -76,7 +78,7 @@ export default {
                     icon: "smile-o"
                   })
     
-                  router.push({ path: '/' })
+                  router.push({ path: '/login' })
                 }
     
             } catch(err) {

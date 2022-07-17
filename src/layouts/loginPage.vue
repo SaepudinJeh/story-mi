@@ -34,10 +34,16 @@
     }).catch((err) => console.warn(err))
   })
  
-  const handleLoginOauth = () => {
-    const baseURL = import.meta.env.PROD ? VITE_BASE_URL_PROD : VITE_BASE_URL_LOCAL;
+  const handleLoginOauth = (e) => {
+    e.preventDefault()
 
-    const urlLoginGoogle = `${baseURL}/oauth/google`
+    const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
+
+    console.log(baseURL)
+
+    const urlLoginGoogle = `${baseURL.value}/oauth/google`
+
+    console.log(urlLoginGoogle)
 
     var left = (screen.width/2 - 200)
     var top = (screen.height/2 - 150)
@@ -45,8 +51,6 @@
 
     win.focus()
   }
-
-  console.log("wkwkwkw", import.meta.env.DEV)
 
 </script>
 
