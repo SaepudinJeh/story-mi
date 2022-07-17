@@ -33,7 +33,6 @@
   onMounted(() => {
     googleOneTap({ autoLogin: true }).then((res) => {
       const data = decodeCredential(res.credential)
-      console.info("response on tap", data);
 
       const payload = {
         email: data.email,
@@ -47,19 +46,19 @@
     }).catch((err) => console.warn(err))
   })
  
-  const handleLoginOauth = (e) => {
-    e.preventDefault()
+  // const handleLoginOauth = (e) => {
+  //   e.preventDefault()
 
-    const urlLoginGoogle = `${baseURL.value}/oauth/google`
+  //   const urlLoginGoogle = `${baseURL.value}/oauth/google`
 
-    console.log(urlLoginGoogle)
+  //   console.log(urlLoginGoogle)
 
-    var left = (screen.width/2 - 200)
-    var top = (screen.height/2 - 150)
-    const win = window.open(urlLoginGoogle, 'resizable=yes, width=800, height=700, top='+top+', left='+left)
+  //   var left = (screen.width/2 - 200)
+  //   var top = (screen.height/2 - 150)
+  //   const win = window.open(urlLoginGoogle, 'resizable=yes, width=800, height=700, top='+top+', left='+left)
 
-    win.focus()
-  }
+  //   win.focus()
+  // }
 
 </script>
 
@@ -80,9 +79,6 @@
         <div class="flex flex-col w-full pt-5">
           <button @click="handleLogin" class="w-full bg-gray-500 rounded-3xl p-3 text-white font-bold transition duration-200 hover:bg-gray-700">Klik ini kalo mau masuk</button>
         </div>
-        
-        <button @click="handleLoginOauth">Klik login</button>
-
         <router-link to="/" class="text-xs xs:text-sm sm:text-base">Kembali</router-link>
       </div>
     </form>

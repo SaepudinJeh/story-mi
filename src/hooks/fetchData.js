@@ -9,9 +9,5 @@ export const FetchData = async ({ url, payload }) => {
       body: JSON.stringify(payload)
   })
 
-  const result = await response.json()
-  
-  console.log('result', result)
-  
-  return result;
+  return await response.json()
 }
