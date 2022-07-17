@@ -93,7 +93,7 @@ export default {
             const baseURL = rootGetters['baseUrl/getBaseUrl'];
             const urlBase = `${baseURL}/oauth/login`;
     
-            const result = await FetchData(urlBase, payload);
+            const result = await FetchData({ url: urlBase, payload });
 
             console.log(result)
           } catch (error) {
