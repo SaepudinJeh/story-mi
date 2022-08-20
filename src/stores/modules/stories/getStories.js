@@ -43,7 +43,7 @@ export default {
         
                 console.log('success', result)
         
-                commit('setData', result.data)
+                commit('setData', result.result)
       
             } catch (error) {
               console.log(error)

@@ -27,8 +27,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const isAuth = stores.getters['login/getToken']
 
-  console.log('wkwkkw', isAuth)
-
   if(to.name === 'login' && isAuth) next({ name: 'home' })
   else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
 

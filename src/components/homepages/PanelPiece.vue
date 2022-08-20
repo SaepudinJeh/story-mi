@@ -1,5 +1,13 @@
 <script setup>
-    defineProps(['data'])
+  import moment from 'moment/min/moment-with-locales'
+  moment.locale('id')
+
+  defineProps(['data'])
+
+  const time = (data) => {
+    return moment(data).format('LL')
+  }
+
 </script>
 
 <template>
@@ -9,14 +17,14 @@
         v-if="data?.image[0]?.url"
         v-lazy="data && data?.image[0]?.url"
         class="h-36 w-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-52 md:h-52  rounded-full object-cover shadow-lg"
-        alt="alip"
+        :alt="data?.title"
       >
       <h2 class="font-title text-2xl xs:text-xl sm:text-3xl">
         {{ data?.desc }}
       </h2>
 
       <p class="text-xs">
-        {{ data?.createdStory }}
+        {{ time(data?.createdStory) }}
       </p>
     </div>
   </section>

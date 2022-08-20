@@ -10,6 +10,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "moment": "^2.29.4",
     "vant": "^3.4.3",
     "vue": "^3.2.25",
     "vue-router": "4",

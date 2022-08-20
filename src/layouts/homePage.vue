@@ -20,6 +20,8 @@
     return store.getters['getStories/getStories']
   })
 
+  console.log('data', stories.value);
+
   const loading = computed(() => {
     return store.getters['getStories/getLoading']
   })
@@ -47,14 +49,14 @@
 
 
     <div class="flex items-center flex-col gap-y-2 fixed bottom-5 right-5">
+      <ButtonLogin v-if="!isAuth" />
       <div
-        v-if="isAuth"
+        v-else
         class="flex items-center flex-col gap-y-2"
       >
         <ButtonDashboard />
         <ButtonLogout />
       </div>
-      <ButtonLogin v-else />
     </div>
   </section>
 </template>
