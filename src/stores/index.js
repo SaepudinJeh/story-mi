@@ -5,6 +5,7 @@ import getStories from './modules/stories/getStories'
 import createStories from './modules/stories/createStories'
 import baseUrl from './modules/env'
 import deleteStories from './modules/stories/deleteStories'
+import updateStories from './modules/stories/updateStories'
 
 const stores = createStore({
     modules: {
@@ -12,7 +13,8 @@ const stores = createStore({
         getStories,
         createStories,
         baseUrl,
-        deleteStories
+        deleteStories,
+        updateStories
     }
 })
 

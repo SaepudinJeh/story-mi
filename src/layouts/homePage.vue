@@ -1,5 +1,6 @@
 <script setup>
   import { useStore } from 'vuex';
+  import { useRouter } from 'vue-router';
   import { ActionSheet, Toast } from 'vant';
 
   import ButtonLogin from '../components/homepages/ButtonLogin.vue'
@@ -12,6 +13,7 @@
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
   const store = useStore()
+  const router = useRouter()
 
   const isAuth = computed(() => {
     return store.getters['login/getToken']
@@ -42,11 +44,13 @@
   const getId = ref({ _id: '' });
 
   const onSelectAction = (item) => {
-    console.log('wkwkkw', item);
     switch(item.id) {
       case 1 : {
-        Toast('Edit!')
+        Toast({
+          message: 'Hadeee ...'
+        })
         handleActionShow.value = false
+        router.push('/edit-story')
         break;
       }
       case 2 : {
@@ -70,8 +74,11 @@
   }
 
   const handleAction = (data) => {
-    console.log('idddd', data?._id);
+    console.log('idddd', data);
     getId.value._id = data?._id
+
+    store.commit({ type: 'updateStories/setData', data })
+
     handleActionShow.value = true
   }
 </script>

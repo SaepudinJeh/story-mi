@@ -24,11 +24,13 @@ const showCalendar = ref(false)
 
 const getBase64Image = ref()
 
+const getData = computed(() => store.getters['updateStories/getData'])?.value?.data;
+
 const formsStory = ref({
-  title: '',
-  desc: '',
-  createdStory: '',
-  image: ''
+  _id: getData?._id,
+  title: getData?.title || '',
+  desc: getData?.desc || '',
+  createdStory: getData?.createdStory || '',
 })
 
 const dataImage = ref({
@@ -49,19 +51,18 @@ const handleCreateStory = (e) => {
   dataImage.value.file =  getBase64Image.value && getBase64Image?.value[0]?.content
 
   if(dataImage?.value?.file) {
-    return store.dispatch('createStories/uploadImage', dataImage.value).then(() => {
-      store.dispatch('createStories/createStory', formsStory.value)
+    return store.dispatch('updateStories/uploadImage', dataImage.value).then(() => {
+      store.dispatch('updateStories/updateStory', formsStory.value)
     })
+
   }
 
-  return store.dispatch('createStories/createStory', formsStory.value)
+  return store.dispatch('updateStories/updateStory', formsStory.value)
 }
 
 const loading = computed(() => {
-  return store.getters['createStories/getLoading']
+  return store.getters['updateStories/getLoading']
 })
-
-console.log(loading.value)
 
 </script>
 

@@ -16,6 +16,11 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: () => import('../layouts/dashboardPage.vue')
+  },
+  {
+    path: '/edit-story',
+    name: 'edit-story',
+    component: () => import('../layouts/editStoryPage.vue')
   }
 ]
 

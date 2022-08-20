@@ -5,12 +5,16 @@ export default {
     namespaced: true,
     state: {
         loading: false,
-        resultUploadImage: null
+        resultUploadImage: null,
+        data: null
     },
     getters: {
         getLoading(state) {
             return state.loading;
         },
+        getData(state) {
+          return state?.data;
+        }
     },
     mutations: {
         setLoading(state) {
@@ -18,6 +22,9 @@ export default {
         },
         setResultUploadImage(state, data) {
             state.resultUploadImage = data
+        },
+        setData(state, data) {
+          state.data = data
         }
     },
     actions: {
@@ -26,23 +33,23 @@ export default {
                 commit('setLoading')
 
                 const urlCloudinary = `https://api.cloudinary.com/v1_1/${payload.cloud_name}/image/upload`;
-        
+
                 const data = new FormData()
                 data.append('file', payload.file)
                 data.append('upload_preset', payload.upload_preset)
                 data.append('cloud_name', payload.cloud_name)
-        
+
                 const responseUploadImage = await fetch(urlCloudinary, {
                     method:'POST',
                     body: data
                 })
-        
+
                 const resultUpload = await responseUploadImage.json()
-        
+
                 console.log(resultUpload);
-        
+
                 commit('setResultUploadImage', resultUpload)
-      
+
             } catch (error) {
                 console.log(error)
                 Toast.fail('Ups!')
@@ -51,13 +58,13 @@ export default {
             }
           },
 
-        async createStory({ commit, state, rootGetters }, payload) {
+        async updateStory({ commit, state, rootGetters }, payload) {
             try {
                 commit('setLoading')
 
                 const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
 
-                const urlBase = `${getEnvURl}/v1/story/create`
+                const urlBase = `${getEnvURl}/v1/story/update`
 
                 const getToken = JSON.parse(localStorage.getItem('access_token'))
 
