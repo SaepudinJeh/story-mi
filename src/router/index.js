@@ -1,5 +1,4 @@
 import { createWebHistory, createRouter } from 'vue-router'
-import { stores } from '../stores'
 
 const routes = [
   {
@@ -30,7 +29,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const isAuth = stores.getters['login/getToken']
+  const isAuth = localStorage.getItem('access_token')
 
   if(to.name === 'login' && isAuth) next({ name: 'home' })
   else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
