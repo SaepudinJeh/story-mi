@@ -34,7 +34,7 @@
 
   onMounted(() => {
     console.log('token', getToken.value);
-    if (getToken.value) {
+    if (!getToken.value) {
       console.log('token2', getToken.value);
       googleOneTap({ autoLogin: true }).then((res) => {
         const data = decodeCredential(res.credential)
@@ -52,20 +52,6 @@
     }
 
   })
- 
-  // const handleLoginOauth = (e) => {
-  //   e.preventDefault()
-
-  //   const urlLoginGoogle = `${baseURL.value}/oauth/google`
-
-  //   console.log(urlLoginGoogle)
-
-  //   var left = (screen.width/2 - 200)
-  //   var top = (screen.height/2 - 150)
-  //   const win = window.open(urlLoginGoogle, 'resizable=yes, width=800, height=700, top='+top+', left='+left)
-
-  //   win.focus()
-  // }
 
 </script>
 
