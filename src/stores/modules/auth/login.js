@@ -68,6 +68,7 @@ export default {
                   })
     
                   localStorage.setItem('access_token', JSON.stringify(isAuth.access_token));
+                  localStorage.setItem('user', JSON.stringify(isAuth.user));
     
                   router.push({ path: '/' })
 
