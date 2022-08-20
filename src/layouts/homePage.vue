@@ -15,9 +15,7 @@
   const store = useStore()
   const router = useRouter()
 
-  const isAuth = computed(() => {
-    return store.getters['login/getToken']
-  })
+  const isAuth = localStorage.getItem('access_token')
 
   const stories = computed(() => {
     return store.getters['getStories/getStories']
