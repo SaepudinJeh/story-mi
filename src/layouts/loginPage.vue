@@ -34,23 +34,19 @@
 
   onMounted(() => {
     console.log('token', getToken.value);
-    if (!getToken.value) {
-      console.log('token2', getToken.value);
-      googleOneTap({ autoLogin: true }).then((res) => {
-        const data = decodeCredential(res.credential)
-  
-        const payload = {
-          email: data.email,
-          username: data.given_name,
-          email_verified: data.email_verified,
-          avatar: data.picture,
-          provider: 'google'
-        }
-  
-        store.dispatch('login/oauthLogin', payload)
-      }).catch((err) => console.warn(err))
-    }
+    googleOneTap({ autoLogin: true }).then((res) => {
+      const data = decodeCredential(res.credential)
 
+      const payload = {
+        email: data.email,
+        username: data.given_name,
+        email_verified: data.email_verified,
+        avatar: data.picture,
+        provider: 'google'
+      }
+
+      store.dispatch('login/oauthLogin', payload)
+    }).catch((err) => console.warn(err))
   })
 
 </script>
