@@ -62,9 +62,9 @@
       <div class="p-10 border-[1px] -mt-10 border-slate-200 rounded-md flex flex-col items-center space-y-3">
         <div class="py-8 flex flex-col items-center gap-3 text-2xl text-gray-500">
           <img
+            v-lazy="'https://res.cloudinary.com/stories-1999-2100/image/upload/v1661001817/image-header/login_image_imigo0.jpg'"
             width="100"
             class="-mt-10 rounded-full"
-            src="../assets/images/login_image.jpg"
           >
           <p class="font-title">
             Selamat datang, Mualifah
