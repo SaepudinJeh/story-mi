@@ -51,12 +51,14 @@ export default {
             }
           },
 
-        async createStory({ commit, state }, payload) {
+        async createStory({ commit, state, rootGetters }, payload) {
             try {
                 commit('setLoading')
 
+                const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
+
                 // const urlBase = 'http://localhost:3000/v1/post/stories'
-                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/post/stories'
+                const urlBase = `${getEnvURl}/v1/post/stories`
 
                 const getToken = JSON.parse(localStorage.getItem('access_token'))
         

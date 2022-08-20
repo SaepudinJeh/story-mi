@@ -22,13 +22,13 @@ export default {
         }
     },
     actions: {
-        async fetchStories({commit}) {
+        async fetchStories({ commit, rootGetters }) {
             try {
                 commit('setLoading')
-                
 
-                // const urlBase = 'http://localhost:3000/v1/post/stories'
-                const urlBase = 'https://story-wkwk-app.herokuapp.com/v1/get/stories?user=aliffah'
+                const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
+
+                const urlBase = `${getEnvURl}/v1/get/stories?user=aliffah`
         
                 const response = await fetch(urlBase, {
                 headers: {
