@@ -22,10 +22,10 @@
     return store.getters['login/getLoading']
   })
 
-  watchEffect(() => {
-    localStorage.removeItem('is_login')
-    localStorage.removeItem('access_token')
-  })
+  // watchEffect(() => {
+  //   localStorage.removeItem('is_login')
+  //   localStorage.removeItem('access_token')
+  // })
 
   // const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
 
