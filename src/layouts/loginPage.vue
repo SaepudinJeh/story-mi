@@ -31,8 +31,10 @@
 
   const getToken = computed(() => store.getters['login/getToken']);
 
+  console.log('token', getToken);
+
   onMounted(() => {
-    if (getToken.value !== null || getToken.value !== undefined || getToken.value !== '') {
+    if (!getToken.value) {
       googleOneTap({ autoLogin: true }).then((res) => {
         const data = decodeCredential(res.credential)
   
