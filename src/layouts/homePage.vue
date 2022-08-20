@@ -13,7 +13,7 @@
   const store = useStore()
 
   const isAuth = computed(() => {
-    return store.getters['login/getIsAuth']
+    return store.getters['login/getToken']
   })
 
   const stories = computed(() => {

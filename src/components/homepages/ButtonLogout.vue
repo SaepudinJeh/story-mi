@@ -1,15 +1,11 @@
 <script setup>
     import { useRouter } from 'vue-router';
-    import { useStore } from 'vuex';
-
-    const store = useStore()
+    import { googleLogout } from 'vue3-google-login';
     const router = useRouter()
 
     const handleLogout = () => {
-        localStorage.removeItem('is_login')
         localStorage.removeItem('access_token')
-
-        store.commit('login/setIAuth')
+        googleLogout()
         router.go(0)
     }
 </script>
