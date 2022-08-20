@@ -1,6 +1,6 @@
 <script setup>
   import { computed, ref } from 'vue';
-  import { onMounted, watchEffect } from 'vue';
+  import { onMounted } from 'vue';
   import { useStore } from 'vuex';
   import { googleOneTap, decodeCredential } from 'vue3-google-login';
 
