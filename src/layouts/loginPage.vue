@@ -1,8 +1,8 @@
 <script setup>
   import { computed, ref } from 'vue';
-  import { onMounted } from 'vue';
+  // import { onMounted } from 'vue';
   import { useStore } from 'vuex';
-  import { googleOneTap, decodeCredential } from 'vue3-google-login';
+  // import { googleOneTap, decodeCredential } from 'vue3-google-login';
 
   import Loader_eye from '../components/loaders/loader_eye.vue';
 
@@ -29,25 +29,28 @@
 
   // const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
 
-  const getToken = computed(() => store.getters['login/getToken']);
+  // const getToken = computed(() => store.getters['login/getToken']);
 
 
-  onMounted(() => {
-    console.log('token', getToken.value);
-    googleOneTap({ autoLogin: true }).then((res) => {
-      const data = decodeCredential(res.credential)
+  // onMounted(() => {
+  //   if (!getToken.value) {
+  //     console.log('token2', getToken.value);
+  //     googleOneTap({ autoLogin: true }).then((res) => {
+  //       const data = decodeCredential(res.credential)
+  
+  //       const payload = {
+  //         email: data.email,
+  //         username: data.given_name,
+  //         email_verified: data.email_verified,
+  //         avatar: data.picture,
+  //         provider: 'google'
+  //       }
+  
+  //       store.dispatch('login/oauthLogin', payload)
+  //     }).catch((err) => console.warn(err))
+  //   }
 
-      const payload = {
-        email: data.email,
-        username: data.given_name,
-        email_verified: data.email_verified,
-        avatar: data.picture,
-        provider: 'google'
-      }
-
-      store.dispatch('login/oauthLogin', payload)
-    }).catch((err) => console.warn(err))
-  })
+  // })
 
 </script>
 
