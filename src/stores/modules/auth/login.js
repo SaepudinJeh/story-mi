@@ -68,10 +68,9 @@ export default {
                   })
     
                   localStorage.setItem('access_token', JSON.stringify(isAuth.access_token));
-                  localStorage.setItem('is_login', JSON.stringify(true))
     
                   router.push({ path: '/' })
-                  
+
                 } else {
                   Toast.fail({
                     message: 'Gagal Login!',
@@ -83,7 +82,7 @@ export default {
     
             } catch(err) {
                 console.log('error', err)
-                router.push({ path: '/' })
+                router.go(0)
             } finally {
                 commit('setLoading')
             }
@@ -95,9 +94,23 @@ export default {
     
             const result = await FetchData({ url: urlBase, payload });
 
+            if(result.statusCode === 200) {
+              localStorage.setItem('access_token', JSON.stringify(result.access_token));
+
+              return router.push({ path: '/' })
+            } else {
+              Toast.fail({
+                message: 'Gagal Login!',
+                icon: "smile-o"
+              })
+
+              router.push({ path: '/login' })
+            }
+
             console.log(result)
           } catch (error) {
             console.log(error)
+            router.go(0)
           }
         }
     }

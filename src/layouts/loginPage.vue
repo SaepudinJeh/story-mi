@@ -27,23 +27,27 @@
     localStorage.removeItem('access_token')
   })
 
-  const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
-  console.log(baseURL)
+  // const baseURL = computed(() => store.getters['baseUrl/getBaseUrl']);
+
+  const getToken = computed(() => store.getters['login/getToken']);
 
   onMounted(() => {
-    googleOneTap({ autoLogin: true }).then((res) => {
-      const data = decodeCredential(res.credential)
+    if (getToken.value !== null || getToken.value !== undefined || getToken.value !== '') {
+      googleOneTap({ autoLogin: true }).then((res) => {
+        const data = decodeCredential(res.credential)
+  
+        const payload = {
+          email: data.email,
+          username: data.given_name,
+          email_verified: data.email_verified,
+          avatar: data.picture,
+          provider: 'google'
+        }
+  
+        store.dispatch('login/oauthLogin', payload)
+      }).catch((err) => console.warn(err))
+    }
 
-      const payload = {
-        email: data.email,
-        username: data.given_name,
-        email_verified: data.email_verified,
-        avatar: data.picture,
-        provider: 'google'
-      }
-
-      store.dispatch('login/oauthLogin', payload)
-    }).catch((err) => console.warn(err))
   })
  
   // const handleLoginOauth = (e) => {
