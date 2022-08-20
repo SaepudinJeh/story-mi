@@ -1,4 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
+import stores from '../stores'
 
 const routes = [
   {
@@ -23,13 +24,13 @@ const router = createRouter({
   routes
 })
 
-// router.beforeEach((to, from, next) => {
-//   const isAuth = stores.getters['login/getIsAuth']
+router.beforeEach((to, from, next) => {
+  const isAuth = stores.getters['login/getToken']
 
-//   if(to.name === 'login' && isAuth) next({ name: 'home' })
-//   else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
+  if(to.name === 'login' && isAuth !== null || isAuth !== undefined || isAuth !== '') next({ name: 'home' })
+  else if(to.name === 'dashboard' && !isAuth) next({ name: 'login' })
 
-//   else next()
-// })
+  else next()
+})
 
 export default router
