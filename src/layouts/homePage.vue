@@ -56,20 +56,20 @@
       case 2 : {
         store.dispatch('deleteStories/deleteStory', getId.value)
 
-        Toast('Hapus!')
+        Toast('Terhapus!')
         store.dispatch('getStories/fetchStories')
         handleActionShow.value = false
         break;
       }
       default: {
-        Toast('Sip!')
+        Toast('Wkwkwkw :D')
         handleActionShow.value = false
       }
     }
   }
 
   const handleCancelAction = () => {
-    Toast('Sip!')
+    Toast('Wkwkwkw :D')
     handleActionShow.value = false
   }
 
@@ -104,7 +104,7 @@
       <lazy-component>
         <PanelPiece
           :data="story"
-          @click="() => handleAction(story)"
+          @click.stop="() => handleAction(story)"
         />
       </lazy-component>
     </template>

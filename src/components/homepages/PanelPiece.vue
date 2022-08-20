@@ -29,10 +29,14 @@
 
         <div class="mt-4 sm:text-sm xss:text-xs text-[10px]">
           <p class="font-title text-lg sm:text-2xl md:text-3xl capitalize">
+            {{ data?.title }}
+          </p>
+
+          <p class="font-title text-base md:text-2xl capitalize">
             Created by : {{ getDataUser }}
           </p>
 
-          <p class="sm:mt-2">
+          <p class="sm:mt-2 text-[12px] xs:text-base">
             {{ time(data?.createdStory) }}
           </p>
         </div>
