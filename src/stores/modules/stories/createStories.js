@@ -57,8 +57,7 @@ export default {
 
                 const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
 
-                // const urlBase = 'http://localhost:3000/v1/post/stories'
-                const urlBase = `${getEnvURl}/v1/post/stories`
+                const urlBase = `${getEnvURl}/v1/story/create`
 
                 const getToken = JSON.parse(localStorage.getItem('access_token'))
         
