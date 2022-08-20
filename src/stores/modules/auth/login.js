@@ -37,7 +37,6 @@ export default {
     actions: {
         async authLoginLocal({ commit, rootGetters }, payload) {
             try {
-              console.log('Payload', payload)
     
                 commit('setLoading')
 
@@ -57,7 +56,6 @@ export default {
     
                 const isAuth = await response.json()
     
-                console.log('response', isAuth)
     
                 if(isAuth.statusCode === 200) {
                   commit('setIAuth')
@@ -108,7 +106,6 @@ export default {
               router.push({ path: '/login' })
             }
 
-            console.log(result)
           } catch (error) {
             console.log(error)
             router.go(0)

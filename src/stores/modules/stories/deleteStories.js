@@ -19,15 +19,13 @@ export default {
             try {
                 commit('setLoading')
 
-                console.log('payload', payload);
-
                 const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
 
                 const urlBase = `${getEnvURl}/v1/delete`
 
                 const getToken = JSON.parse(localStorage.getItem('access_token'))
         
-                const response = await fetch(urlBase, {
+                await fetch(urlBase, {
                   headers: {
                     Authorization: `Bearer ${getToken}`,
                     'Content-Type': 'application/json'
@@ -37,10 +35,6 @@ export default {
                   method:'POST',
                   body: JSON.stringify(payload)
                 })
-
-                const result = await response.json()
-        
-                console.log('success', result)
       
             } catch (error) {
               console.log(error)

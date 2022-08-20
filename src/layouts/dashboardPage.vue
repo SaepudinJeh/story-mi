@@ -7,9 +7,6 @@ import { useStore } from 'vuex';
 
 const store = useStore()
 
-const afterRead = (file) => {
-  console.log(file)
-}
 
 const beforeReadImage = (file) => {
   if (file.type === 'image/png' || file.type === 'image/jpeg') {
@@ -61,7 +58,6 @@ const loading = computed(() => {
   return store.getters['createStories/getLoading']
 })
 
-console.log(loading.value)
 
 </script>
 
@@ -96,7 +92,6 @@ console.log(loading.value)
           <template #input>
             <Uploader
               v-model="getBase64Image"
-              :after-read="afterRead"
               :before-read="beforeReadImage"
               max-count="1"
             />

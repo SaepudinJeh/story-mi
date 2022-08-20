@@ -41,8 +41,6 @@ export default {
         
                 const result = await response.json()
         
-                console.log('success', result)
-        
                 commit('setData', result.result)
       
             } catch (error) {

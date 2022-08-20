@@ -74,7 +74,6 @@
   }
 
   const handleAction = (data) => {
-    console.log('idddd', data);
     getId.value._id = data?._id
 
     store.commit({ type: 'updateStories/setData', data })

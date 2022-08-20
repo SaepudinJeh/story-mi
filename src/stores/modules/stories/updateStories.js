@@ -46,8 +46,6 @@ export default {
 
                 const resultUpload = await responseUploadImage.json()
 
-                console.log(resultUpload);
-
                 commit('setResultUploadImage', resultUpload)
 
             } catch (error) {
