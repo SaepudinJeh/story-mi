@@ -48,7 +48,7 @@ const handleCreateStory = (e) => {
   e.preventDefault()
   dataImage.value.file =  getBase64Image.value && getBase64Image?.value[0]?.content
 
-  if(dataImage.value.file) {
+  if(dataImage?.value?.file) {
     return store.dispatch('createStories/uploadImage', dataImage.value).then(() => {
       store.dispatch('createStories/createStory', formsStory.value)
     })

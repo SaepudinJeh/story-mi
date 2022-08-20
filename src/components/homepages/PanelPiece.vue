@@ -28,7 +28,9 @@
         </h2>
 
         <div class="mt-4 sm:text-sm xss:text-xs text-[10px]">
-          <p class="font-title text-lg sm:text-2xl md:text-3xl capitalize">Created by : {{ getDataUser }}</p>
+          <p class="font-title text-lg sm:text-2xl md:text-3xl capitalize">
+            Created by : {{ getDataUser }}
+          </p>
 
           <p class="sm:mt-2">
             {{ time(data?.createdStory) }}
