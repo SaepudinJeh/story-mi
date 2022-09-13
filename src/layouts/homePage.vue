@@ -3,7 +3,6 @@
   import { useRouter } from 'vue-router';
   import { ActionSheet, Toast } from 'vant';
 
-  import ButtonLogin from '../components/homepages/ButtonLogin.vue'
   import ButtonDashboard from '../components/homepages/ButtonDashboard.vue'
   import ButtonLogout from '../components/homepages/ButtonLogout.vue'
   import { computed, ref } from 'vue';
@@ -11,7 +10,7 @@
   import PanelPiece from '../components/homepages/PanelPiece.vue';
   import { onMounted } from 'vue';
   import Loader_eye from '../components/loaders/loader_eye.vue';
-import IntroMenu from '../components/homepages/IntroMenu.vue';
+  import IntroMenu from '../components/homepages/IntroMenu.vue';
 
   const store = useStore()
   const router = useRouter()
@@ -112,9 +111,8 @@ import IntroMenu from '../components/homepages/IntroMenu.vue';
 
 
     <div class="flex items-center flex-col gap-y-2 fixed bottom-5 right-5">
-      <ButtonLogin v-if="!isAuth" />
       <div
-        v-else
+        v-if="isAuth"
         class="flex items-center flex-col gap-y-2"
       >
         <ButtonDashboard />

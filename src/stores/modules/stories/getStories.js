@@ -28,7 +28,7 @@ export default {
 
                 const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
 
-                const urlBase = `${getEnvURl}/v1/get/stories?user=aliffah`
+                const urlBase = `${getEnvURl}/v1/get/stories?user=saepudin`
         
                 const response = await fetch(urlBase, {
                 headers: {

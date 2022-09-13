@@ -60,16 +60,6 @@
   <div class="min-h-screen flex justify-center items-center bg-white font-sans">
     <form>
       <div class="p-10 border-[1px] -mt-10 border-slate-200 rounded-md flex flex-col items-center space-y-3">
-        <div class="py-8 flex flex-col items-center gap-3 text-2xl text-gray-500">
-          <img
-            v-lazy="'https://res.cloudinary.com/stories-1999-2100/image/upload/v1661001817/image-header/login_image_imigo0.jpg'"
-            width="100"
-            class="-mt-10 rounded-full"
-          >
-          <p class="font-title">
-            Selamat datang, Mualifah
-          </p>
-        </div>
         <input
           v-model.lazy="setForm.email"
           class="focus:outline-none rounded-full p-3 border-[1px] border-slate-200 w-80"
@@ -100,11 +90,5 @@
         </router-link>
       </div>
     </form>
-    
-    <div class="fixed bottom-0 w-full p-3 bg-[#F7F9FA] flex justify-center items-center space-x-3 text-[14px] font-medium text-[#666]">
-      <p class="font-title text-xl text-center">
-        "Angin tidak berhembus untuk menggoyangkan pepohonan melainkan untuk menguji akarnya"
-      </p>
-    </div>
   </div>
 </template>
