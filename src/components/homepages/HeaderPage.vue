@@ -4,24 +4,26 @@ import { effect } from '../../utils/randomAos';
 
 
 <template>
-  <section class="w-full h-screen flex items-center justify-center">
-    <div class="flex items-center flex-col gap-y-5">
-      <img
-        v-lazy="'https://res.cloudinary.com/stories-1999-2100/image/upload/v1656216575/image-header/alip_d1hnhj.jpg'"
+  <div class="h-screen flex items-center justify-center mx-auto w-screen">
+    <div class="w-52 relative">
+      <div
+        class="aspect-h-16 aspect-w-16 rounded-full"
+        data-aos-duration="400"
         :data-aos="effect"
-        data-aos-duration="1000"
-        data-aos-anchor-placement="top-center"
-        class="h-36 w-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-52 md:h-52  rounded-full object-cover shadow-lg"
-        alt="alip"
       >
-      <h2
-        :data-aos="effect"
-        data-aos-duration="1500"
-        data-aos-anchor-placement="top-center"
-        class="font-title text-2xl xs:text-xl sm:text-3xl"
-      >
-        Cuma manusia yang hobi makan
-      </h2>
+        <img
+          v-lazy="'https://res.cloudinary.com/stories-1999-2100/image/upload/v1656216575/image-header/alip_d1hnhj.jpg'"
+          alt="aliffah"
+          class="grayscale rounded-full object-cover bg-no-repeat bg-center bg-contain shadow border border-gray-600"
+        >
+      </div>
+      <!-- <div data-aos-once="false" data-aos-delay="800" data-aos="fade-down-right" class="absolute -top-10 -left-14">
+        <img src="/chat/chat2.svg" alt="chat-1" class="w-36">
+      </div>
+
+      <div data-aos-once="false" data-aos-delay="1300" data-aos="zoom-in-left" class="absolute -right-14 -bottom-7">
+        <img src="/chat/chat3.svg" alt="chat-2" class="w-32">
+      </div> -->
     </div>
-  </section>
+  </div>
 </template>

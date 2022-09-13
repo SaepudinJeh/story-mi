@@ -11,6 +11,7 @@
   import PanelPiece from '../components/homepages/PanelPiece.vue';
   import { onMounted } from 'vue';
   import Loader_eye from '../components/loaders/loader_eye.vue';
+import IntroMenu from '../components/homepages/IntroMenu.vue';
 
   const store = useStore()
   const router = useRouter()
@@ -90,8 +91,10 @@
     @cancel="handleCancelAction"
   />
 
-  <section>
+  <section class="overflow-hidden">
     <Loader_eye v-if="loading || loadingDelete" />
+
+    <IntroMenu />
 
     <HeaderPage />
 

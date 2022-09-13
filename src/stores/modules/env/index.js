@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 export default {
   namespaced: true,
   state: {
@@ -5,7 +6,8 @@ export default {
   },
   getters: {
     getBaseUrl(state) {
-      return import.meta.env.PROD ? state.base_url : import.meta.env.VITE_BASE_URL_LOCAL
+      // return import.meta.env.PROD ? state.base_url : import.meta.env.
+      return import.meta.env.VITE_BASE_URL_PROD
     }
   }
 }
