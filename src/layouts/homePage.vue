@@ -11,6 +11,7 @@
   import { onMounted } from 'vue';
   import IntroMenu from '../components/homepages/IntroMenu.vue';
   import LoaderClock from '../components/loaders/loader_clock.vue';
+import ButtonLogin from '../components/homepages/ButtonLogin.vue';
 
   const store = useStore()
   const router = useRouter()
@@ -112,8 +113,9 @@
 
 
     <div class="flex items-center flex-col gap-y-2 fixed bottom-5 right-5">
+      <ButtonLogin v-if="!isAuth" />
       <div
-        v-if="isAuth"
+        v-else
         class="flex items-center flex-col gap-y-2"
       >
         <ButtonDashboard />

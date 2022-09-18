@@ -81,7 +81,7 @@ const loading = computed(() => {
           v-model="formsStory.desc"
           type="textarea"
           placeholder="Apa yang kamu rasakan Lip?"
-          rows="1"
+          autosize
           :rules="[{required:true, message:'Harus diisi ya :)'}]"
         />
 

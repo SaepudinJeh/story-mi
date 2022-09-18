@@ -12,19 +12,19 @@ import { effect } from '../../utils/randomAos';
         :data-aos="effect"
       >
         <img
-          v-lazy="'/images/aing.png'"
+          v-lazy="'/images/alip.svg'"
           alt="aliffah"
           class="grayscale rounded-full object-cover bg-no-repeat bg-center bg-contain shadow border border-gray-600"
         >
       </div>
       <div
         data-aos-once="false"
-        data-aos-delay="800"
+        data-aos-delay="500"
         data-aos="fade-down-right"
-        class="absolute -top-10 -left-14"
+        class="absolute -top-20 -left-16"
       >
         <img
-          src="/icons/chat2.svg"
+          src="/icons/bubble1.svg"
           alt="chat-1"
           class="w-36"
         >
@@ -32,12 +32,12 @@ import { effect } from '../../utils/randomAos';
 
       <div
         data-aos-once="false"
-        data-aos-delay="1000"
+        data-aos-delay="700"
         data-aos="zoom-in-left"
         class="absolute -right-14 -bottom-7"
       >
         <img
-          src="/icons/chat3.svg"
+          src="/icons/bubble2.svg"
           alt="chat-2"
           class="w-32"
         >
