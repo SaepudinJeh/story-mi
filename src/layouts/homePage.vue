@@ -9,8 +9,8 @@
   import HeaderPage from '../components/homepages/HeaderPage.vue';
   import PanelPiece from '../components/homepages/PanelPiece.vue';
   import { onMounted } from 'vue';
-  import Loader_eye from '../components/loaders/loader_eye.vue';
   import IntroMenu from '../components/homepages/IntroMenu.vue';
+  import LoaderClock from '../components/loaders/loader_clock.vue';
 
   const store = useStore()
   const router = useRouter()
@@ -44,9 +44,6 @@
   const onSelectAction = (item) => {
     switch(item.id) {
       case 1 : {
-        Toast({
-          message: 'Hadeee ...'
-        })
         handleActionShow.value = false
         router.push('/edit-story')
         break;
@@ -60,7 +57,6 @@
         break;
       }
       default: {
-        Toast('Wkwkwkw :D')
         handleActionShow.value = false
       }
     }
@@ -72,11 +68,14 @@
   }
 
   const handleAction = (data) => {
-    getId.value._id = data?._id
+    if(isAuth) {
+      getId.value._id = data?._id
+  
+      store.commit({ type: 'updateStories/setData', data })
+  
+      handleActionShow.value = true
+    }
 
-    store.commit({ type: 'updateStories/setData', data })
-
-    handleActionShow.value = true
   }
 </script>
 
@@ -91,11 +90,13 @@
   />
 
   <section class="overflow-hidden">
-    <Loader_eye v-if="loading || loadingDelete" />
+    <!-- <Loader_eye v-if="loading || loadingDelete" /> -->
 
     <IntroMenu />
 
     <HeaderPage />
+
+    <LoaderClock v-if="loading || loadingDelete" />
 
     <template
       v-for="story in stories"

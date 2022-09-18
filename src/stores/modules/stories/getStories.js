@@ -2,15 +2,15 @@ import { Toast } from "vant";
 export default {
     namespaced: true,
     state: {
-        data: {},
-        loading: false
+      data: [],
+      loading: false
     },
     getters: {
         getLoading(state) {
-            return state.loading;
+          return state.loading;
         },
         getStories(state) {
-            return state.data;
+          return state.data?.reverse();
         }
     },
     mutations: {
@@ -22,33 +22,33 @@ export default {
         }
     },
     actions: {
-        async fetchStories({ commit, rootGetters }) {
-            try {
-                commit('setLoading')
+      async fetchStories({ commit, rootGetters }) {
+        try {
+            commit('setLoading')
 
-                const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
+            const getEnvURl = rootGetters['baseUrl/getBaseUrl'];
 
-                const urlBase = `${getEnvURl}/v1/get/stories?user=saepudin`
-        
-                const response = await fetch(urlBase, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                mode: 'cors',
-                credentials: 'same-origin',
-                method:'POST'
-                })
-        
-                const result = await response.json()
-        
-                commit('setData', result.result)
-      
-            } catch (error) {
-              console.log(error)
-              Toast.fail('Ups!')
-            } finally {
-                commit('setLoading')
-            }
-          }
+            const urlBase = `${getEnvURl}/v1/get/stories?user=saepudin`
+    
+            const response = await fetch(urlBase, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors',
+            credentials: 'same-origin',
+            method:'POST'
+            })
+    
+            const result = await response.json()
+    
+            commit('setData', result.result)
+  
+        } catch (error) {
+          console.log(error)
+          Toast.fail('Ups!')
+        } finally {
+            commit('setLoading')
+        }
+      }
     }
 }

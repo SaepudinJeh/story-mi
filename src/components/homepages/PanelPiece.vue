@@ -27,11 +27,11 @@
       </div>
     </template>
 
-    <template #title>
+    <!-- <template #title>
       <p class="font-title text-lg sm:text-2xl md:text-3xl capitalize text-center">
         {{ data?.title }}
       </p>
-    </template>
+    </template> -->
 
     <template #desc>
       <div class="text-center">
