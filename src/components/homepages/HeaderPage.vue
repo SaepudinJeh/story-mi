@@ -12,8 +12,8 @@ import { effect } from '../../utils/randomAos';
         :data-aos="effect"
       >
         <img
-          v-lazy="'/images/aing.png'"
-          alt="aliffah"
+          v-lazy="'/images/aing 1.svg'"
+          alt="aing"
           class="grayscale rounded-full object-cover bg-no-repeat bg-center bg-contain shadow border border-gray-600"
         >
       </div>

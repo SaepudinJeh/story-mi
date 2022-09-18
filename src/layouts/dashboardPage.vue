@@ -80,8 +80,8 @@ const loading = computed(() => {
         <Field
           v-model="formsStory.desc"
           type="textarea"
-          placeholder="Apa yang kamu rasakan Lip?"
-          rows="1"
+          placeholder="Apa yang kamu rasakan?"
+          autosize
           :rules="[{required:true, message:'Harus diisi ya :)'}]"
         />
 
