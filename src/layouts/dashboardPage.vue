@@ -98,7 +98,7 @@ const loading = computed(() => {
           </template>
         </Field>
 
-        
+
         <Field
           v-model="formsStory.createdStory"
           is-link
