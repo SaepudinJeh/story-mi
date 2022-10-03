@@ -10,7 +10,7 @@ export default {
           return state.loading;
         },
         getStories(state) {
-          return state.data?.reverse();
+          return state.data;
         }
     },
     mutations: {
